@@ -10,6 +10,7 @@ import { EMPTY_OBSERVER } from 'rxjs/internal/Subscriber';
 })
 export class AccountService {
   baseUrl = 'https://localhost:5001/api/';
+  validError:string[] =[]
   private currentUserSource = new ReplaySubject<User | null>(1)
   currentUser$ = this.currentUserSource.asObservable();
   constructor(private http:HttpClient) { }
