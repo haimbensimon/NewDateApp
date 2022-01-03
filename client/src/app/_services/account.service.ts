@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { User } from './../_models/user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -9,9 +10,9 @@ import { EMPTY_OBSERVER } from 'rxjs/internal/Subscriber';
   providedIn: 'root'
 })
 export class AccountService {
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = 'https://localhost:5001/api/'
   validError:string[] =[]
-  private currentUserSource = new ReplaySubject<User | null>(1)
+  private currentUserSource = new ReplaySubject<User | any>(1)
   currentUser$ = this.currentUserSource.asObservable();
   constructor(private http:HttpClient) { }
 
@@ -45,4 +46,5 @@ export class AccountService {
     this.currentUserSource.next(null);
   }
 }
+
 
